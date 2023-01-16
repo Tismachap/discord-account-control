@@ -3,18 +3,14 @@ from colorama import *
 init(autoreset=True)
 import requests
 from os import system as sys
+from info import token, username
 
-#Put your token here
-token = "YOUR TOKEN HERE"
-
-#Preset des textes
 def info(text, complement):
     print("["+Fore.CYAN+text+Fore.RESET+"] "+complement)
 
 def text(text):
     print(Fore.BLACK+Back.WHITE+text)
-
-#Menu de séléctions
+    
 tprint('Requests  Discord')
 info("1", "Send Messages\n")
 info("2", "Modify Messages\n")
@@ -46,7 +42,7 @@ if selection == str(1):
 
         requests.post(url(channel_id), headers=auth, data=message)
 
-        print(info("Tisma", message["content"]))
+        print(info(username, message["content"]))
 
     while 1<2:
         send_messages() 
@@ -162,12 +158,3 @@ if selection == str(5):
 
     while 1<2:
         typing()
-
-if selection == str(6):
-    sys('cls')
-
-    url = "https://canary.discord.com/api/v9/users/@me/settings-proto/1"
-
-    auth = {
-        'authorization': "OTgwMTUwMzQ0MDc4MjEzMTYw.GMY873.T0LSWbZ7x49dquCrfK44puOcvimVvIapOfyY6A"
-    }
